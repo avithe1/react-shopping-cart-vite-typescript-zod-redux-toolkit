@@ -1,5 +1,6 @@
 import { useAppSelector } from "../hooks/cartHooks";
 import { Link } from "react-router-dom";
+import { rootPath } from "../utils/constsants";
 
 const Navbar = () => {
   const { products } = useAppSelector((state) => state.cart);
@@ -11,7 +12,7 @@ const Navbar = () => {
     <nav>
       <h1>React E-Commerce</h1>
       <div>
-        <Link to="/cart">
+        <Link to={rootPath + "/cart"}>
           Cart {mySet1.size > 0 ? `(${mySet1.size})` : null}
         </Link>
       </div>
