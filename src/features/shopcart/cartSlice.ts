@@ -3,9 +3,9 @@ import type {
   CartState,
   Product,
   CartItem,
-  ProductsResponse,
 } from "../../cartTypes";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { ProductsResponseSchema } from "../../schemas";
 
 const initialState: CartState = {
   products: [],
@@ -17,7 +17,7 @@ export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
   const response = await fetch(
     "https://fakestoreapi.in/api/products?page=2&limit=2"
   );
-  const data = (await response.json()) as ProductsResponse;
+  const data = ProductsResponseSchema.parse(await response.json());
   return data.products;
 });
 
