@@ -19,10 +19,10 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename={rootPath}>
         <Routes>
-          <Route path={rootPath} element={<ProductList />} />
-          <Route path={rootPath + "/cart"} element={<Cart />} />
+          <Route path="/" element={<ProductList />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

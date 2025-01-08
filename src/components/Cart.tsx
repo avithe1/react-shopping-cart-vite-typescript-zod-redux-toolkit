@@ -6,7 +6,6 @@ import {
   updateItem,
 } from "../features/shopcart/cartSlice";
 import React, { useEffect, useState } from "react";
-import { rootPath } from "../utils/constsants";
 
 const Cart = () => {
   const { products, status } = useAppSelector((state) => state.cart);
@@ -105,7 +104,7 @@ const Cart = () => {
             </div>
           ) : null}
 
-          <button className="back-button" onClick={() => navigate(rootPath)}>
+          <button className="back-button" onClick={() => navigate("/")}>
             Back to shopping
           </button>
         </div>
