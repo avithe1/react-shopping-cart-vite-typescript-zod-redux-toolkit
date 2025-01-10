@@ -44,9 +44,13 @@ const Cart = () => {
 
   const updateCartQuantity = (id: number) => {
     let p = { ...products.filter((product) => product.id === id)[0] };
-    const newQuantity = quantities.filter((q) => q.id === id)[0].quantity;
-    p.quantity = newQuantity;
-    dispatch(updateItem(p));
+    const quantity = quantities.filter((q) => q.id === id)[0].quantity;
+    p.quantity = quantity;
+    const update = {
+      id: p.id,
+      quantity,
+    };
+    dispatch(updateItem(update));
   };
 
   return (
@@ -85,7 +89,9 @@ const Cart = () => {
                     <button onClick={() => updateCartQuantity(product.id)}>
                       Update
                     </button>
-                    <button onClick={() => dispatch(removeFromCart(product))}>
+                    <button
+                      onClick={() => dispatch(removeFromCart(product.id))}
+                    >
                       Remove
                     </button>
                   </div>
